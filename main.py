@@ -49,7 +49,7 @@ class EtherClient:
         return balance
     
     @script_exceptions
-    async def bridge_Sep(self, to_address: str) -> str:
+    async def bridge_sep(self, to_address: str) -> str:
         data = f"0x9a2ac6d5000000000000000000000000{self.address[2:]}0000000000000000000000000000000000000000000000000000000000030d4000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000"
         gwei = await self.wait_for_gas
         
@@ -85,7 +85,7 @@ async def run_script(index: int, key: str, proxy: str):
     logger.info(f"Acc.{index} | Preparing for bridge")
     client = EtherClient(index, RPC, key, proxy)
     
-    await client.bridge_Sep(to_address="0xcb95f07B1f60868618752CeaBBe4e52a1f564336")
+    await client.bridge_sep(to_address="0xcb95f07B1f60868618752CeaBBe4e52a1f564336")
     
     
 async def main():
