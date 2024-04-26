@@ -77,7 +77,7 @@ class EtherClient:
         if NEED_DELAY_ACT:
             await asyncio.sleep(self.random_int(DELAY_ACT))
         
-        logger.success(f"Acc.{self.index} | Transaction Hash: https://bscscan.com/tx/{tx_hash}")
+        logger.success(f"Acc.{self.index} | Transaction Hash: https://sepolia.etherscan.io/tx/{tx_hash}")
             
         return tx_hash
 
