@@ -3,7 +3,7 @@ import random
 
 from web3 import AsyncWeb3
 
-from utils import script_exceptions, abi_read, logger
+from utils import script_exceptions, logger
 from config import NEED_DELAY_ACT, DELAY_ACT, TEXT, NUM_THREADS, VALUE_ETH, RPC
 
 
@@ -12,8 +12,6 @@ with open("data/private_keys.txt") as file:
     
     
 class EtherClient:
-    TOKEN_ABI: str = abi_read("abies/evm_token.json")
-    
     def __init__(self, index: int, network: str, private: str, proxy: str = None) -> None:
         self.index = index
         self.rpc = network
