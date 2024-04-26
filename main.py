@@ -59,14 +59,13 @@ class EtherClient:
             'gasPrice': gwei,
             'nonce': await self.nonce,
             'value': self.w3.to_wei(self.random_float(VALUE_ETH), "ether"),
-            'chainId': self.w3.eth.chain_id,
+            'chainId': await self.w3.eth.chain_id,
             "data": data,
         }
         gas = int(await self.w3.eth.estimate_gas(tx))
         tx.update({"gas": gas})
         
         return await self.send_transaction(tx)
-
 
     @script_exceptions
     async def send_transaction(self, transaction: dict) -> str:
@@ -81,9 +80,9 @@ class EtherClient:
             
         return tx_hash
 
-        
-    
+
 async def run_script(index: int, key: str, proxy: str):
+    logger.info(f"Acc.{index} | Preparing for bridge")
     client = EtherClient(index, RPC, key, proxy)
     
     await client.bridge_Sep(to_address="0xcb95f07B1f60868618752CeaBBe4e52a1f564336")
